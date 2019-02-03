@@ -1,0 +1,76 @@
+body{
+  background-image: url(./CSS/IMAGE/bacgroundBody.png);
+
+}
+*{ 
+ 
+  color: #000;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#span-top{
+  font-size: 11px;
+  color: #FF9F1C;
+  margin: 80px 30px 80px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+span{
+  color: indianred;
+  font-size: 14px;
+  text-align: center;
+  margin: 5px;
+  padding: 3px;
+}
+img{
+  width: 200px;
+  margin: 1pt 0 0 30pt;
+  margin-top: 20px;
+  padding: 5px;
+}
+#form-div{
+  border-radius: 2px;
+  width: 282px; 
+  height: 331px; 
+  left: 50%; 
+  margin: -130px 0 0 -210px; 
+  padding:10px;
+  position: absolute; 
+  top: 50%;
+  background-color: #020203;
+  
+}
+
+#form-pai{
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  background-color: #fff;
+  margin: 22px  -9px -70px;
+  border-color:blue 2px;
+}
+
+input{
+  margin: 10px;
+  background-color: #FFF;
+  display: block;
+  width: 90%;
+  height: 30px;
+  margin: 10px;
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  margin: 10px 20px 20px 16px;
+  outline: none;
+  
+}
+#input-acess{
+  background: none;
+  background-color:#0A2239 ;
+  width: 90%;
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  outline: none;
+ 
+}

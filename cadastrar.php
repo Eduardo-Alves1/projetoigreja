@@ -14,13 +14,13 @@
         <img src="./IMAGE/logoIEAB.png" alt="Logo da igreja Evangélica Avivamento Biblíco" width="250px">
         
 
-        <form id="form-cadastro" method = "POST" action="processa.php">
+        <form id="form-cadastro" method = "POST">
 
-             <input type="email" placeholder="Seu E-mail">
-             <input type="text" placeholder="Telefone">
-             <input type="email" placeholder="Usuário">
-             <input type="password" placeholder="Senha">
-             <input type="password" placeholder="Confirmar Senha">
+             <input type="email" name="email" placeholder="Seu E-mail" maxlength="40">
+             <input type="text" name="telefone" placeholder="Telefone" maxlength="30">
+             <input type="text"name="nome" placeholder="Usuário" maxlength="40">
+             <input type="password" name="senha" placeholder="Senha" maxlength="15">
+             <input type="password" name="confsenha" placeholder="Confirmar Senha">
              <input id="input-cadastrar" type="submit" value="CADASTRAR">
              
             

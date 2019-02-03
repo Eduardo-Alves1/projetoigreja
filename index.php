@@ -19,19 +19,21 @@
 
        <img src="./IMAGE/logoIEAB.png" alt="Logo da igrja evangélica  avivamento biblíco">
         
-        <input type="email" placeholder="Seu nome de usuário">
-        <input type="password" placeholder="Sua senha de cesso">
+        <input type="email" name="email" placeholder="Seu nome de usuário">
+        <input type="password" name="senha" placeholder="Sua senha de cesso">
         <input id="input-acess" type="submit" value="Entrar">
         <p>Cadastrar novo adiministrador.<strong><a href="cadastrar.php"> Clik aqui!</a></strong>  </p> 
         
-        
-      
       </form>
     
     
       </div>
     
-    
+    <?php
+
+
+
+    ?>
     
 </body>
 </html>

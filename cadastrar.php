@@ -1,3 +1,9 @@
+<?php
+  //  require_once 'classes/usuarios.php';
+    require_once ("classes/usuarios.php");
+    $u = new Usuario;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,7 +33,45 @@
         </form>
     </div>
 
+    <?php
+      //verificar se clicou no botão CADASTRAR
+       if ( isset($_POST['email'])){
+            $email = addslashes ($_POST['email']);
+            $telefone = addslashes ($_POST['telefone']);
+            $nome = addslashes ($_POST['nome']);
+            $senha = addslashes ($_POST['senha']);
+            $ConfirmarSenha = addslashes ($_POST['confsenha']);
 
+            //verificar se não esta vazio
+
+            if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
+            
+            {
+                $u->conectar("projeto_login","root","localhost","");
+                if($u->mensagemErro == "")
+                {
+                    if($senha == $ConfirmarSenha)
+                    {
+                       if ($u-> cadastrar($email,$telefone,$nome,$senha,$ConfirmarSenha)){
+                            echo "Cadastrado com sucesso! Acesse para entrar.";
+                       }else{
+                           echo "Email já cadastrado !";
+                       }
+                    }else{
+                        echo "Senha e Confirmar Senha não correspondem!";
+                    }
+                        
+
+                }else{
+                    echo "Erro: ".$u->$mensagemErro;
+
+                }
+            }else{
+                echo "Preencha todos os campos";
+            }
+        }
+
+    ?>
     
 </body>
 </html>

@@ -6,18 +6,17 @@
      */
     function getConnection(){
 
-        $host="localst";
+        $host="localhost";
         $port=33006;
-        
         $user="root";
-        $password="";
-        $dbname="phpmyadmin";
+        $senha="";
+        $dbname="projeto_login";
         
         
         try{
-            $conn = new PDO('mysql:host=localhost;dbname=phpmyadmin', $user, $password);
+            $pdo = new PDO('mysql:host=localhost;dbname=phpmyadmin', $user, $senha);
             return $conn;
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         }catch(PDOException $e){
             echo 'Erro' .$e > getMessage();

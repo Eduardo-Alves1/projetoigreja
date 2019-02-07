@@ -1,6 +1,7 @@
 <?php
   //  require_once 'classes/usuarios.php';
     require_once ("classes/usuarios.php");
+    include_once ('./classes/Conexao.class.php');
     $u = new Usuario;
 ?>
 
@@ -47,7 +48,7 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $u->conectar("projeto_login","root","localhost","");
+                $u->Conexao("mysql:host=".$servidor.";dbname=".$banco,$usuario,$senha);
                 if($u->mensagemErro == "")
                 {
                     if($senha == $ConfirmarSenha)

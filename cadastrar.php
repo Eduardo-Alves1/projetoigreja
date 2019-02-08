@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
   //  require_once 'classes/usuarios.php';
     include_once './classes/usuarios.php';
     
@@ -49,7 +49,7 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $u->conectar($nome,$host,$usuario,$senha);
+                $u->conectar($nome, $host, $usuario, $senha);
                 if($u->mensagemErro == "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)

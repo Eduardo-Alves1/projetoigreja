@@ -1,11 +1,16 @@
 <?php
+ 
 class Usuario 
 {
     
     private $pdo;
 	public $msgErro = "";
-	public function conectar($nome, $host, $usuario, $senha) 
+    public function conectar() 
 	{
+        $host = "localhost";
+        $nome = 'projeto_login';
+        $usuario ="root";
+        $senha = "";
 		global $pdo;
 		try{
 			$pdo = new PDO("mysql:host=".$host.";dbname=".$nome,$usuario,$senha);

@@ -1,4 +1,5 @@
 <?php
+    session_start();
   //  require_once 'classes/usuarios.php';
     include_once './classes/usuarios.php';
     

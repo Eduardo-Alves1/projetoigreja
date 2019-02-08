@@ -1,7 +1,7 @@
 <?php
   //  require_once 'classes/usuarios.php';
-    require_once ("classes/usuarios.php");
-    include_once ('./classes/Conexao.class.php');
+    include_once './classes/usuarios.php';
+    
     $u = new Usuario;
 ?>
 
@@ -48,12 +48,12 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $u->Conexao("mysql:host=".$servidor.";dbname=".$banco,$usuario,$senha);
-                if($u->mensagemErro == "")
+                $u->conectar($nome,$host,$usuario,$senha);
+                if($u->mensagemErro == "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)
                     {
-                       if ($u-> cadastrar($email,$telefone,$nome,$senha,$ConfirmarSenha)){
+                       if ($u->cadastrar($email,$telefone,$nome,$senha,$ConfirmarSenha)){
                             echo "Cadastrado com sucesso! Acesse para entrar.";
                        }else{
                            echo "Email já cadastrado !";

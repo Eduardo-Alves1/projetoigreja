@@ -1,33 +1,28 @@
 <?php
-include_once './classes/Conexao.class.php';
 class Usuario 
 {
     
     private $pdo;
-    public $mensagemErro = "";
+	public $msgErro = "";
+	public function conectar($nome, $host, $usuario, $senha) 
+	{
+		global $pdo;
+		try{
+			$pdo = new PDO("mysql:host=".$host.";dbname=".$nome,$usuario,$senha);
+		} catch (PDOException $e) {
+			$msgErro = $e->getMessage();
+		}
+	}
 
-   // public function conectar($nome, $host, $user,$senha){
-
-   // $this->pdo = new Conexao;
-    }
-
-    /*try {
-       $pdo = new PDO ("mysql:dbname=".$nome.";$host=".$host,$usario,$senha);
-        
-        
-    } catch (PDOException $e) {
-        global $mensagemErro;
-        $mensagemErro = $e -> getMessage();
-    }*/
       function cadastrar( $email, $telefone,$nome,$senha){
-       $pdo = new Conexao();
+       $pdo = new conectar();
         global $pdo;
         //verificar se ja esta cadastrado
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");
         $sql ->bindValue (":email",$email);
         $sql ->execute();
         if($sql -> rowCout() > 0){
-            return false;
+            return false; //JÁ ESTÁ CADASTRADO
         }else{
             //TESTAR A FUNÇÃO ABAIXO COM O getConnection
             $sql -> $pdo->prepare("ISERT INTO usuarios (email, telefone, nome, senha,) VAlUES (:email, :telefone, :nome, :senha)");
@@ -40,6 +35,7 @@ class Usuario
         }
     }
       function logar($email, $senha){
+          GLOBAL $PDO;
         //VERIFICAR SE O USUARIO REALMENTE ESTÁ CADASTRADO
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha ");
         $sql->bindValue(":email",$email);
@@ -51,10 +47,11 @@ class Usuario
             $_SESSION ['id_usuario']= $dado ['id_usuario'];
             return true;
         }else{
-            return false;
+            return false; //NAO FOI POSSIVEL LOGAR
         }
     
     
     }
+}
 
 ?>

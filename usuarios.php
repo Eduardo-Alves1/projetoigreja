@@ -1,9 +1,9 @@
 <?php
  
-class Usuario 
+class Usuarios 
 {
     
-    private $pdo;
+    
 	public $msgErro = "";
     public function conectar() 
 	{
@@ -11,15 +11,17 @@ class Usuario
         $nome = 'projeto_login';
         $usuario ="root";
         $senha = "";
-		global $pdo;
+		
 		try{
-			$pdo = new PDO("mysql:host=".$host.";dbname=".$nome,$usuario,$senha);
+            $pdo = new PDO("mysql:host=".$host.";dbname=.$nome",$usuario,$senha);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Conectado com o banco!";
 		} catch (PDOException $e) {
 			$msgErro = $e->getMessage();
 		}
-	}
+    }
 
-      function cadastrar( $email, $telefone,$nome,$senha){
+     public function cadastrar( $email, $telefone,$nome,$senha){
        $pdo = new conectar();
         global $pdo;
         //verificar se ja esta cadastrado
@@ -39,8 +41,8 @@ class Usuario
             return true;
         }
     }
-      function logar($email, $senha){
-          GLOBAL $PDO;
+    public  function logar($email, $senha){
+          global $PDO;
         //VERIFICAR SE O USUARIO REALMENTE ESTÁ CADASTRADO
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha ");
         $sql->bindValue(":email",$email);
@@ -58,5 +60,4 @@ class Usuario
     
     }
 }
-
 ?>

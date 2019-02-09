@@ -1,9 +1,9 @@
 <?php
     
-  //  require_once 'classes/usuarios.php';
-    include_once './classes/usuarios.php';
+  
+    include_once 'usuarios.php';
     
-    $u = new Usuario;
+    $usuario = new Usuarios;
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +49,12 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $u->conectar($nome, $host, $usuario, $senha);
-                if($u->mensagemErro == "")// se vazia esta ok
+                $usuario->conectar();
+                 if($usuario ->$msgErro== "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)
                     {
-                       if ($u->cadastrar($email,$telefone,$nome,$senha,$ConfirmarSenha)){
+                       if ($usuario->cadastrar($email,$telefone,$nome,$senha,$ConfirmarSenha)){
                             echo "Cadastrado com sucesso! Acesse para entrar.";
                        }else{
                            echo "Email já cadastrado !";
@@ -63,9 +63,8 @@
                         echo "Senha e Confirmar Senha não correspondem!";
                     }
                         
-
                 }else{
-                    echo "Erro: ".$u->$mensagemErro;
+                    echo "Erro: ".$usuario->$msgErro;
 
                 }
             }else{

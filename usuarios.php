@@ -1,10 +1,14 @@
 <?php
-class Usuarios 
+ Class Usuarios 
 {
-    public $pdo;
+    
 	public $msgErro = "";
     public function conectar() 
 	{
+
+    
+       
+        global $pdo;
         $host = "localhost";
         $nome = "projeto_login";
         $usuario ="root";
@@ -12,15 +16,16 @@ class Usuarios
 		
 		try{
             $pdo = new PDO("mysql:host=$host;dbname=$nome",$usuario,$senha);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+           // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Conectado com o banco!";
 		} catch (PDOException $e) {
 			$msgErro = $e->getMessage();
 		}
     }
 
-     public function cadastrar( $email, $telefone,$nome,$senha){
-       $pdo = new conectar() ;
+     public function cadastrar ( $email, $telefone,$nome,$senha){
+        global $pdo;
+       $pdo ->  conectar() ;
         
         //verificar se ja esta cadastrado
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");
@@ -40,7 +45,7 @@ class Usuarios
         }
     }
     public  function logar($email, $senha){
-          global $PDO;
+          global $pdo;
         //VERIFICAR SE O USUARIO REALMENTE ESTÁ CADASTRADO
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha ");
         $sql->bindValue(":email",$email);

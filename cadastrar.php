@@ -1,8 +1,8 @@
 <?php
     
-    
-include("usuarios.php");
-    $usuario = new Usuarios;
+    require "usuarios.php";
+    $msgErro = "";
+    $usuario = new  Usuarios;
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +35,7 @@ include("usuarios.php");
     </div>
 
     <?php
+        
       //verificar se clicou no botão CADASTRAR
        if ( isset($_POST['email'])){
             $email = addslashes ($_POST['email']);
@@ -49,7 +50,7 @@ include("usuarios.php");
             
             {
                 $usuario ->conectar();
-               //  if($usuario ->$msgErro== "")// se vazia esta ok
+                 if($usuario ->$msgErro== "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)
                     {
@@ -62,8 +63,8 @@ include("usuarios.php");
                         echo "Senha e Confirmar Senha não correspondem!";
                     }
                         
-                //}else{
-                  //  echo "Erro: ".$usuario->$msgErro;
+                }else{
+                    echo "Erro: ".$usuario->$msgErro;
 
                 }
             }else{

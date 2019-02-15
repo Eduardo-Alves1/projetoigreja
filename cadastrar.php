@@ -1,8 +1,7 @@
 <?php
     
-  
-    include_once 'usuarios.php';
     
+include("usuarios.php");
     $usuario = new Usuarios;
 ?>
 
@@ -49,8 +48,8 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $usuario->conectar();
-                 if($usuario ->$msgErro== "")// se vazia esta ok
+                $usuario ->conectar();
+               //  if($usuario ->$msgErro== "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)
                     {
@@ -63,8 +62,8 @@
                         echo "Senha e Confirmar Senha não correspondem!";
                     }
                         
-                }else{
-                    echo "Erro: ".$usuario->$msgErro;
+                //}else{
+                  //  echo "Erro: ".$usuario->$msgErro;
 
                 }
             }else{

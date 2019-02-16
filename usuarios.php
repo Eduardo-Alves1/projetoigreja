@@ -1,31 +1,28 @@
-<?php
- Class Usuarios 
-{
-    
-	public $msgErro = "";
-    public function conectar() 
-	{
 
-    
-       
-        global $pdo;
-        $host = "localhost";
-        $nome = "projeto_login";
-        $usuario ="root";
-        $senha = ""; 
-		
-		try{
-            $pdo = new PDO("mysql:host=$host;dbname=$nome",$usuario,$senha);
-           // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Conectado com o banco!";
-		} catch (PDOException $e) {
-			$msgErro = $e->getMessage();
-		}
+<?php
+ class Usuarios {
+
+public $msgErro = '';
+
+  public function getConnection(){
+    global $pdo;
+    $dsn ='mysql:host=localhost;dbname=projeto_login';
+    $user='root';
+    $pass='';
+
+    try {
+        $pdo = new PDO($dsn,$user,$pass);
+        return $pdo;
+
+    } catch (PDOException $ex) {
+        echo ('ERRO: '.$ex->getMessage());
+        //throw $th;
     }
 
+  }
      public function cadastrar ( $email, $telefone,$nome,$senha){
         global $pdo;
-       $pdo ->  conectar() ;
+       $pdo -> getConnection() ;
         
         //verificar se ja esta cadastrado
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");

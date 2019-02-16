@@ -1,6 +1,6 @@
 <?php
-    
-    require "usuarios.php";
+ 
+    require 'usuarios.php';
     $msgErro = "";
     $usuario = new  Usuarios;
 ?>
@@ -49,8 +49,8 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $usuario ->conectar();
-                 if($usuario ->$msgErro== "")// se vazia esta ok
+                $usuario->getConnection();
+                 if($usuario ->$msgErro == "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)
                     {

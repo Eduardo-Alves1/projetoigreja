@@ -1,35 +1,32 @@
 
 <?php
  class Usuarios {
+private $pdo;
+public $msgErro = "";
 
-public $msgErro = '';
-
-  public function getConnection(){
+  public function getConnection($nome,$host,$usuario,$senha){
     global $pdo;
-    $dsn ='mysql:host=localhost;dbname=projeto_login';
-    $user='root';
-    $pass='';
-
+    
     try {
-        $pdo = new PDO($dsn,$user,$pass);
-        return $pdo;
-
+        $pdo = new PDO("mysql:dbname=".$nome.";$host=".$host,$usuario,$senha);
+        
     } catch (PDOException $ex) {
-        echo ('ERRO: '.$ex->getMessage());
-        //throw $th;
+        $msgErro = $ex->getMessage();
+        
     }
 
   }
      public function cadastrar ( $email, $telefone,$nome,$senha){
         global $pdo;
-       $pdo -> getConnection() ;
+       
         
         //verificar se ja esta cadastrado
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");
         $sql ->bindValue (":email",$email);
         $sql ->execute();
-        if($sql -> rowCout() > 0){
+        if($sql->rowCount()){
             return false; //JÁ ESTÁ CADASTRADO
+
         }else{
             
             $sql -> $pdo->prepare("ISERT INTO usuarios (email, telefone, nome, senha,) VAlUES (:email, :telefone, :nome, :senha)");

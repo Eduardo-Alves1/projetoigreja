@@ -1,8 +1,9 @@
 <?php
  
-    require 'usuarios.php';
+    require_once 'usuarios.php';
+    $u = new  Usuarios;
     $msgErro = "";
-    $usuario = new  Usuarios;
+    
 ?>
 
 <!DOCTYPE html>
@@ -49,22 +50,24 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $usuario->getConnection();
-                 if($usuario ->$msgErro == "")// se vazia esta ok
+                $u->getConnection("projeto_login","localhost","root","");
+                 if($u ->$msgErro == "")// se vazia esta ok
                 {
                     if($senha == $ConfirmarSenha)
                     {
-                       if ($usuario->cadastrar($email,$telefone,$nome,$senha,$ConfirmarSenha)){
+                       if ($u->cadastrar($email,$telefone,$nome,$senha))
+                       {
                             echo "Cadastrado com sucesso! Acesse para entrar.";
                        }else{
                            echo "Email já cadastrado !";
                        }
-                    }else{
+                    }else
+                    {
                         echo "Senha e Confirmar Senha não correspondem!";
                     }
                         
                 }else{
-                    echo "Erro: ".$usuario->$msgErro;
+                    echo "Erro: ".$u->$msgErro;
 
                 }
             }else{

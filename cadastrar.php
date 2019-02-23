@@ -1,6 +1,13 @@
 <?php
- 
+
+include 'database.class.php';
+use Banco\Database;
+
+$pdo = Database::conexao();
+
+    session_start();
     require_once 'usuarios.php';
+    
     $u = new  Usuarios;
     $msgErro = "";
     
@@ -14,6 +21,7 @@
     <title>Cadastro de novo usuário</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./sytileCadastro.css" />
+   
     
 </head>
 <body>
@@ -50,12 +58,12 @@
             if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
             
             {
-                $u->getConnection("projeto_login","localhost","root","");
-                 if($u ->$msgErro == "")// se vazia esta ok
-                {
+             //   $u->getConnection("projeto_login","localhost","root","");
+               //  if($u ->$msgErro == "")// se vazia esta ok
+                //{
                     if($senha == $ConfirmarSenha)
                     {
-                       if ($u->cadastrar($email,$telefone,$nome,$senha))
+                       if ($u->cadastrar($pdo,$email,$telefone,$nome,$senha))
                        {
                             echo "Cadastrado com sucesso! Acesse para entrar.";
                        }else{
@@ -66,10 +74,9 @@
                         echo "Senha e Confirmar Senha não correspondem!";
                     }
                         
-                }else{
-                    echo "Erro: ".$u->$msgErro;
-
-                }
+               // }else{
+                 //   echo "Erro: ".$u->$msgErro;
+                //}
             }else{
                 echo "Preencha todos os campos";
             }

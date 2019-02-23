@@ -1,27 +1,44 @@
 
 <?php
- class Usuarios {
-private $pdo;
-public $msgErro = "";
 
-  public function getConnection($nome,$host,$usuario,$senha){
+
+
+ class Usuarios {
+/*
+    public $msgErro = "";
+
+    public function getConnection($nome,$host,$usuario,$senha){
     global $pdo;
+
+    $dsn = 'msql:host=localhost;dbname=projeto_login';
+    $user = "root";
+    $pass="";
+    
+
+
     
     try {
-        $pdo = new PDO("mysql:dbname=".$nome.";$host=".$host,$usuario,$senha);
+        $pdo = new PDO($dsn,$user,$pass);
+      //  $pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha);
         
     } catch (PDOException $ex) {
+
+
         $msgErro = $ex->getMessage();
         
+        -> =>
     }
 
   }
-     public function cadastrar ( $email, $telefone,$nome,$senha){
-        global $pdo;
-       
+
+  */
+
+     public function cadastrar ($pdo, $email, $telefone,$nome,$senha){
+        
+       $nsenha = md5($senha);
         
         //verificar se ja esta cadastrado
-        $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");
+        $sql = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :email");
         $sql ->bindValue (":email",$email);
         $sql ->execute();
         if($sql->rowCount()){
@@ -29,17 +46,18 @@ public $msgErro = "";
 
         }else{
             
-            $sql -> $pdo->prepare("ISERT INTO usuarios (email, telefone, nome, senha,) VAlUES (:email, :telefone, :nome, :senha)");
-            $sql ->bindValue (":email",$email);
-            $sql ->bindValue (":telefone",$telefone);
-            $sql ->bindValue (":usuario",$nome);
-            $sql ->bindValue (":senha",md5($senha));
+            $sql = $pdo->prepare('INSERT INTO usuarios (email, telefone, usuario, senha) VAlUES (:email, :telefone, :nome, :senha)');
+            $sql->bindParam (':email',$email);
+            $sql->bindParam (':telefone',$telefone);
+            $sql->bindParam (':nome',$nome);
+            $sql->bindParam (':senha',$nsenha);
+           // $sql->execute(array(':email'=>$email,':telefone'=>$telefone,':usuario'=>$nome,':senha'=>$senha));
             $sql->execute();
             return true;
         }
     }
-    public  function logar($email, $senha){
-          global $pdo;
+    public  function logar($pdo, $email, $senha){
+        
         //VERIFICAR SE O USUARIO REALMENTE ESTÁ CADASTRADO
         $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha ");
         $sql->bindValue(":email",$email);

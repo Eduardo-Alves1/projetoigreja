@@ -55,12 +55,8 @@ $pdo = Database::conexao();
 
             //verificar se não esta vazio
 
-            if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha))
+            if(!empty($email) && !empty($telefone) && !empty($nome) && !empty ($senha) && !empty($ConfirmarSenha)){
             
-            {
-             //   $u->getConnection("projeto_login","localhost","root","");
-               //  if($u ->$msgErro == "")// se vazia esta ok
-                //{
                     if($senha == $ConfirmarSenha)
                     {
                        if ($u->cadastrar($pdo,$email,$telefone,$nome,$senha))
@@ -74,9 +70,7 @@ $pdo = Database::conexao();
                         echo "Senha e Confirmar Senha não correspondem!";
                     }
                         
-               // }else{
-                 //   echo "Erro: ".$u->$msgErro;
-                //}
+    
             }else{
                 echo "Preencha todos os campos";
             }

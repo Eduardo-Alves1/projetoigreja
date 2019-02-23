@@ -1,3 +1,17 @@
+<?php
+
+include 'database.class.php';
+use Banco\Database;
+
+$pdo = Database::conexao();
+
+    session_start();
+    require_once 'usuarios.php';
+    $u = new  Usuarios;
+   // $msgErro = "";
+    
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,7 +27,7 @@
     <div id="form-div">
       <strong><samp id="span-top">Igreja Evangélica Avivamento Biblíco</samp></strong>
       
-      <form id="form-pai" action="POS">
+      <form id="form-pai" action="POST">
        
         <hr>
 
@@ -25,10 +39,9 @@
         <p>Cadastrar novo adiministrador.<strong><a href="cadastrar.php"> Clik aqui!</a></strong>  </p> 
         
       </form>
-    
-    
       </div>
   
+
     
 </body>
 </html>

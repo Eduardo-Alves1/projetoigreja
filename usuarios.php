@@ -4,34 +4,6 @@
 
 
  class Usuarios {
-/*
-    public $msgErro = "";
-
-    public function getConnection($nome,$host,$usuario,$senha){
-    global $pdo;
-
-    $dsn = 'msql:host=localhost;dbname=projeto_login';
-    $user = "root";
-    $pass="";
-    
-
-
-    
-    try {
-        $pdo = new PDO($dsn,$user,$pass);
-      //  $pdo = new PDO("mysql:dbname=".$nome.";host=".$host,$usuario,$senha);
-        
-    } catch (PDOException $ex) {
-
-
-        $msgErro = $ex->getMessage();
-        
-        -> =>
-    }
-
-  }
-
-  */
 
      public function cadastrar ($pdo, $email, $telefone,$nome,$senha){
         
@@ -67,7 +39,7 @@
             $dado = $sql->fetch();
             session_start();
             $_SESSION ['id_usuario']= $dado ['id_usuario'];
-            return true;
+            return true; //LOGADO COM SUCESSO
         }else{
             return false; //NAO FOI POSSIVEL LOGAR
         }

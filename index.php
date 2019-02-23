@@ -1,5 +1,5 @@
 <?php
-
+//include 'cadastramento.php';
 include 'database.class.php';
 use Banco\Database;
 
@@ -40,7 +40,10 @@ $pdo = Database::conexao();
         
       </form>
       </div>
-  
+  <?php
+
+   
+  ?>
 
     
 </body>

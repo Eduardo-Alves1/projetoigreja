@@ -1,8 +1,6 @@
 
 <?php
 
-
-
  class Usuarios {
 
      public function cadastrar ($pdo, $email, $telefone,$nome,$senha){
@@ -23,7 +21,6 @@
             $sql->bindParam (':telefone',$telefone);
             $sql->bindParam (':nome',$nome);
             $sql->bindParam (':senha',$nsenha);
-           // $sql->execute(array(':email'=>$email,':telefone'=>$telefone,':usuario'=>$nome,':senha'=>$senha));
             $sql->execute();
             return true;
         }
@@ -31,7 +28,7 @@
     public  function logar($pdo, $email, $senha){
         $nsenha = md5($senha);
         //VERIFICAR SE O USUARIO REALMENTE ESTÁ CADASTRADO
-        $sql = $pdo ->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha ");
+        $sql = $pdo->prepare('SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha');
         $sql->bindValue(":email",$email);
         $sql->bindValue(":senha",$nsenha);
         $sql->execute();
@@ -44,7 +41,7 @@
             return false; //NAO FOI POSSIVEL LOGAR
         }
     
-    
+            
     }
 }
 ?>

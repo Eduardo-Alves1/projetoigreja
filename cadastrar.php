@@ -9,7 +9,6 @@ $pdo = Database::conexao();
     require_once 'usuarios.php';
     
     $u = new  Usuarios;
-    $msgErro = "";
     
 ?>
 
@@ -68,8 +67,7 @@ $pdo = Database::conexao();
                     }else
                     {
                         echo "Senha e Confirmar Senha não correspondem!";
-                    }
-                        
+                    }  
     
             }else{
                 echo "Preencha todos os campos";

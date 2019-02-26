@@ -1,5 +1,5 @@
 <?php
-//include 'cadastramento.php';
+
 include 'database.class.php';
 use Banco\Database;
 
@@ -8,7 +8,7 @@ $pdo = Database::conexao();
     session_start();
     require_once 'usuarios.php';
     $u = new  Usuarios;
-   // $msgErro = "";
+   
     
 ?>
 
@@ -41,8 +41,31 @@ $pdo = Database::conexao();
       </form>
       </div>
   <?php
+//verificar se clicou no botão CADASTRAR
 
-   
+
+if ( isset($_POST['email'])){
+
+        $email = addslashes ($_POST['email']);
+        $senha = addslashes ($_POST['senha']);
+        //verificar se não esta vazio
+
+        if(!empty($email) && ($senha)) {
+
+          if($u->logar($pdo,$email,$senha)){
+
+            header ("Location: principal.php");
+
+          }else{
+
+            echo "Email ou senha incorretos!";
+          }
+
+      }else{
+        echo "Prencha todos os campos!";
+      }
+}  
+
   ?>
 
     

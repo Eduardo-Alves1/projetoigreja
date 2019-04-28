@@ -54,7 +54,7 @@ if ( isset($_POST['email'])){
 
           if($u->logar($pdo,$email,$senha)){
 
-            header ("Location: principal.php");
+            header ("location: principal.php");
 
           }else{
 

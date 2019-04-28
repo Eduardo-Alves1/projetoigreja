@@ -17,6 +17,8 @@ $pdo = Database::conexao();
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cache-control"   content="no-cache" />
+    <meta name="copyright" content="© 2014 IEAB" />
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./style.css">
@@ -44,18 +46,19 @@ $pdo = Database::conexao();
 //verificar se clicou no botão CADASTRAR
 
 
-if ( isset($_POST['email'])){
+if ( isset($_POST['email'])&& empty($_POST['email']) == false ){
 
         $email = addslashes ($_POST['email']);
-        $senha = addslashes ($_POST['senha']);
+        $senha = md5(addslashes ($_POST['senha']));
         //verificar se não esta vazio
 
         if(!empty($email) && ($senha)) {
 
+
           if($u->logar($pdo,$email,$senha)){
 
-            header ("location: principal.php");
-
+            header ('location: cadastrarmembro.php');
+            
           }else{
 
             echo "Email ou senha incorretos!";

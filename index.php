@@ -57,7 +57,7 @@ if ( isset($_POST['email'])&& empty($_POST['email']) == false ){
 
           if($u->logar($pdo,$email,$senha)){
 
-            header ('location: cadastrarmembro.php');
+            header ('location: novoadm.php');
             
           }else{
 

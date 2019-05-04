@@ -47,7 +47,7 @@ $pdo = Database::conexao();
 
         <?php
         //verificar se clicou no botão CADASTRAR
-if ( isset($_POST['email'])&& empty($_POST['email']) == false ){
+if ( isset($_POST['email'])){
 
         $email = addslashes ($_POST['email']);
         $senha = md5(addslashes ($_POST['senha']));

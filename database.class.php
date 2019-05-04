@@ -13,7 +13,7 @@ class Database
     {
         # Informações sobre o banco de dados:
         $db_host = "localhost";
-        $db_nome = "projeto_login";
+        $db_nome = "ieab";
         $db_usuario = "root";
         $db_senha = "";
         $db_driver = "mysql";

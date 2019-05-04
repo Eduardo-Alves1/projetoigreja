@@ -27,15 +27,16 @@
         }
     }
     public  function logar($pdo, $email, $senha){
-        $nsenha = md5($senha);
+      //  $nsenha = md5($senha);
         //VERIFICAR SE O USUARIO REALMENTE ESTÁ CADASTRADO
         $sql = $pdo->prepare('SELECT id_usuario FROM usuarios WHERE email = :email AND senha = :senha');
         $sql->bindValue(":email",$email);
-        $sql->bindValue(":senha",$nsenha);
+        $sql->bindValue(":senha",$senha);
         $sql->execute();
         if($sql->rowCount()>0){
             $dado = $sql->fetch();
             session_start();
+            
             $_SESSION ['id_usuario']= $dado ['id_usuario'];
             return true; //LOGADO COM SUCESSO
         }else{

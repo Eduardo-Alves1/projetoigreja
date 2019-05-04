@@ -1,5 +1,5 @@
 <?php
-
+  
 include 'database.class.php';
 use Banco\Database;
 
@@ -11,6 +11,8 @@ $pdo = Database::conexao();
    
     
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,10 +44,9 @@ $pdo = Database::conexao();
         
       </form>
       </div>
-  <?php
-//verificar se clicou no botão CADASTRAR
 
-
+        <?php
+        //verificar se clicou no botão CADASTRAR
 if ( isset($_POST['email'])&& empty($_POST['email']) == false ){
 
         $email = addslashes ($_POST['email']);
@@ -57,7 +58,7 @@ if ( isset($_POST['email'])&& empty($_POST['email']) == false ){
 
           if($u->logar($pdo,$email,$senha)){
 
-            header ('location: novoadm.php');
+            header ("Locale: novoadm.php");
             
           }else{
 

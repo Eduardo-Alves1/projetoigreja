@@ -31,7 +31,7 @@ $pdo = Database::conexao();
     <div id="form-div">
       <strong><samp id="span-top">Igreja Evangélica Avivamento Biblíco</samp></strong>
       
-      <form id="form-pai" action="POST">
+      <form id="form-pai" method="POST" action="">
        
         <hr>
 
@@ -58,7 +58,7 @@ if ( isset($_POST['email'])){
 
           if($u->logar($pdo,$email,$senha)){
 
-            header ("Locale: novoadm.php");
+           header ("Location: novoadm.php");
             
           }else{
 

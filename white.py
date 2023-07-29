@@ -8,7 +8,7 @@ pyautogui.PAUSE = 0.4
 tabela = pd.read_excel("WhiteSanepar.xlsx")
 # print(tabela)
 
-idx = 3
+idx = 150
 for linha in tabela.index:
     pyautogui.click(x=939, y=469)
     codigo = tabela.loc[linha, "UNIDADE"]  # Hold the value in table

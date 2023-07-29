@@ -1,0 +1,17 @@
+ANTES DE COMEÇAR O PROCESSO VOCÊ DEVE:
+
+############################################################
+1 - AJUSTAR O ZOOM DA TEL EM 67                            #
+2 - FAZER LOGIN NO BACKOFFICE                              #
+3 - PEGAR O CÓDIGO DA CONTA QUE SERÁ ATIVADA O WHITE LIST  #
+4 - COLOCAR NA OPÇÃO KAYPAD CODS MANAGEMENT                # 
+5 - COLOCAR O CODIGO DA CONTA EM "CODE CUSTUMER"           #
+###########################################################
+
+INFORMAÇÕES SOBRE O ARQUIVO EXCEL OU CSV
+
+###################################################################
+                                                                  #    
+DEVE CONTER UMA COLUNA CHAMADA "UNIDADE" E ABAIXO DELA OS POCSAGS #
+                                                                  #  
+###################################################################

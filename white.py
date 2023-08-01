@@ -5,10 +5,11 @@ import time
 time.sleep(4)
 pyautogui.PAUSE = 0.4
 # Read a table xlsx
-tabela = pd.read_excel("WhiteSanepar.xlsx")
+tabela = pd.read_excel("WhiteSanepar2.xlsx")
 # print(tabela)
 
-idx = 150
+pocsag = []
+idx = 20
 for linha in tabela.index:
     pyautogui.click(x=939, y=469)
     codigo = tabela.loc[linha, "UNIDADE"]  # Hold the value in table
@@ -30,7 +31,10 @@ for linha in tabela.index:
     time.sleep(5)
     pyautogui.click(x=1218, y=236)
 
+    # CRIANDO UMA LISTA COM TODOS OS POCSAGS ATIVADOS
+    pocsag.append(codigo)
     # Pause
     if linha == idx:
-        print("ÚTIMO INDEX ", linha, " ÚLTIMO POCSAG COPIADO ", codigo)
+        print("ÚTIMO INDEX ", linha)
+        print(" A SEGUJIR A LISTA DE CÓDIGOS EXECUTADOS", pocsag)
         break

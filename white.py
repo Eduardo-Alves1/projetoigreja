@@ -2,10 +2,9 @@ import pandas as pd
 import pyautogui
 import time
 
-time.sleep(4)
 pyautogui.PAUSE = 0.4
 # Read a table xlsx
-tabela = pd.read_excel("WhiteSanepar2.xlsx")
+tabela = pd.read_excel(".xlsx")
 # print(tabela)
 
 pocsag = []
@@ -31,11 +30,12 @@ for linha in tabela.index:
     time.sleep(5)
     pyautogui.click(x=1218, y=236)
 
-    # CRIANDO UMA LISTA COM TODOS OS POCSAGS ATIVADOS
+    # CRIANDO UMA LISTA COM TODOS AS UNIDADE ATIVADAS
     pocsag.append(codigo)
     # Pause
     if linha == idx:
         print("ÚTIMO INDEX ", linha)
 
         break
+
 print(pocsag)
